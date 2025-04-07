@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Questions</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            color: #f8f9fa;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #f8f9fa;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #495057;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .sidebar a:hover {
+            background-color: #6c757d;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            background-color: #f1f1f1;
+        }
+
+        .main-content h1 {
+            margin-top: 0;
+        }
+
+        .question-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .question-list li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .question-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <a href="{% url 'post_question' %}">➕ Post Question</a>
+        <a href="{% url 'logout_view' %}">🔓 Logout</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Questions</h1>
+        <ul class="question-list">
+            {% for question in questions %}
+                <li>
+                    <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
+                </li>
+            {% empty %}
+                <li>No questions have been posted yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
