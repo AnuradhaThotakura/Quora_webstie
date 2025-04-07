@@ -18,7 +18,7 @@ Technologies Used
 
 - Python 3.11
 - Django 5.2
-- SQLite (Default)
+- Mysql (Default)
 - HTML + CSS (Vanilla)
 
 Project Structure
